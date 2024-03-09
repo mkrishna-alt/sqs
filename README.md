@@ -13,3 +13,7 @@ Long Polling
 * Once consumer request for queue, it can wait for the period of time for any msg to arrive.
 * Decreses the number of API calls made SQS
 * Wiating time between 1 sec to 20 sec.
+
+FIFO
+* exactly once delivery 
+* But limite in throufhgput 300 m/s or 3000 m/s if its a batching
