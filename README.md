@@ -21,6 +21,7 @@ FIFO
 pre-requisites 
 * Create a aws profile with name profile
 * Make sure the use can assume a  role which has access to create lambda, sqs, roles, policies, dynamodb
+* Install boto3
 
 ```
 $ terraform init
