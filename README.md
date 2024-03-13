@@ -17,3 +17,12 @@ Long Polling
 FIFO
 * exactly once delivery 
 * But limite in throufhgput 300 m/s or 3000 m/s if its a batching
+
+pre-requisites 
+* Create a aws profile with name profile
+* Make sure the use can assume a  role which has access to create lambda, sqs, roles, policies, dynamodb
+
+$ terrform plan && terraform apply 
+$ cd app && python3 run.py 
+
+access the application and  send queues from http://127.0.0.1:5000 

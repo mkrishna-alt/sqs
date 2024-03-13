@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message to Queue</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <label for="messageInput">Enter Message:</label>
+  <input type="text" id="messageInput" placeholder="Type your message...">
+  <button id="sendMessageBtn">Send Message</button>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sendMessageBtn = document.getElementById('sendMessageBtn');
+      const messageInput = document.getElementById('messageInput');
+
+      sendMessageBtn.addEventListener('click', function () {
+        const message = messageInput.value;
+
+        if (message.trim() === '') {
+          alert('Please enter a message before sending.');
+          return;
+        }
+
+        // Send a request to the server to send a message to the queue
+        fetch(`/send_message?message=${encodeURIComponent(message)}`, { method: 'POST' })
+          .then(response => response.text())
+          .then(responseMessage => alert(responseMessage))
+          .catch(error => console.error('Error sending message:', error));
+      });
+    });
+  </script>
+</body>
+</html>
